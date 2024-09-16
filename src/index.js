@@ -1,17 +1,46 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// PROMISES
+import { getHeroeById } from "./bases/08-import-export";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+/*
+const promesa = new Promise( (resolve, reject) => {
+    setTimeout( () => {
+        //console.log('2 segundos después')
+        /*
+        Tarea:
+        Importat el 
+        */
+       /*
+        const heroe = getHeroeById(2);
+        resolve(heroe)
+        //console.log(heroe);
+        //resolve();
+    }, 5000)
+});
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+promesa.then( (heroe) => {
+    console.log('heroe: ', heroe.name)
+})
+.catch(err => console.warn(err));
+*/
+
+const getHeroesByIdAsync = (id) => {
+    //const promesa = new Promise( (resolve, reject) => {
+    return new Promise( (resolve, reject) => {
+        setTimeout( () => {
+            const heroe = getHeroeById(id);
+            if(heroe){
+                resolve(heroe);
+            } else {
+                reject ('No se encontró el héroe');
+            }
+            resolve(heroe)
+        }, 2000)
+    });
+    //return promesa;
+}
+
+getHeroesByIdAsync(14)
+//.then(hero => console.log("heroe: ", hero))
+.then( console.log )
+//.catch( (err) => console.warn(err));
+.catch(console.warn);
